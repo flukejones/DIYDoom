@@ -1,6 +1,3 @@
-__Author:__ Amro Ibrahim  
-__Reviewer:__ DOOMReboot [twitter](https://twitter.com/DOOMreboot), [web](http://www.movax13h.com)  
-
 # Week 003 - Adding SDL
 Now that we have read some data from the WAD, we need to draw something on the screen, after all we are trying to make a game.  
 The console windows are nice but it is text based (it can be hacked to draw graphics), but we need a window were we can draw some graphics. We can use windows APIs but that will add windows as a dependency for us, which I don’t want. This is where SDL comes in play.  
