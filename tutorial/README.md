@@ -21,8 +21,7 @@ This is one of the best books that dive into DOOM internals.
 * Slade3: This will be a good tool to verify some of our work.  
 
 ### Thoughts  
-~~I don't know if I can complete this project, but I will try my best.~~ I always believe I can.  
-Thanks to __DOOMReboot__ who has offered to help in this project, he has good experience building a doom engine from scratch, and he will be a valuable asset!  
+I don't know if I can complete this project, but I will try my best. I always believe I can.  
 My target platform will be windows, but since we I'm using SDL, it should be easy to get this to work under other platforms.  
 For now, install Visual Studio!  
 
