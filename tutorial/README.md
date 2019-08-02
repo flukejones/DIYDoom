@@ -213,10 +213,10 @@ void R_RenderBSPNode (int bspnum)
     // optimization that makes it even avoid the multiplication
     side = R_PointOnSide (viewx, viewy, bsp);  
 
-    // Recursively divide front space.
+    // Recursively divide front space. (This comment is misleading and not true)
     R_RenderBSPNode (bsp->children[side]); 
 
-    // Possibly divide back space.
+    // Possibly divide back space. (This comment is misleading and not true)
     if (R_CheckBBox (bsp->bbox[side^1]))	
         R_RenderBSPNode (bsp->children[side^1]);
 }
