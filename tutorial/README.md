@@ -22,7 +22,7 @@ This is one of the best books that dive into DOOM internals.
 
 ### Thoughts  
 I don't know if I can complete this project, but I will try my best. I always believe I can.  
-My target platform will be windows, but since we I'm using SDL, it should be easy to get this to work under other platforms.  
+My target platform will be windows, but since I'm using SDL, it should be easy to get this to work under other platforms.  
 For now, install Visual Studio!  
 
 As of 6/20/2019 the project has been renamed from Handmade DOOM to Do It Yourself Doom with SLD (DIY Doom) this is to remove the confusion with other "Handmade" branded projects. You might still see some screenshots with Handmade DOOM in the tutorial.  
