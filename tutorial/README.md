@@ -157,7 +157,7 @@ This will remove the optimization and will force the traversal though the BSP tr
 
 It is amazing how much impact on performance that optimization is, I did some testing with E1M1 and playing being in spawn area.  
  * Without ``` if (R_CheckBBox (bsp->bbox[side^1])) ``` all the sub-sectors gets traversed 477 sub-sectors.  
- * With the change, only 32 sub-sector traversed! You only traversed 6% of the BSP tree!  
+ * With the change, only 32 sub-sector traversed!   
 
 ## Source code
 [Source code](../src)  
