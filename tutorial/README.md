@@ -395,4 +395,4 @@ One interesting thing I found was that the function ```R_ClipPassWallSegment``` 
 [Source code](../src)  
 
 ## Reference
-[Chocolate Doom]()https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom
+[Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom)
