@@ -349,7 +349,7 @@ anglea = ANG90 + xtoviewangle[start];
 
 ```anglea``` is simply ```xtoviewangle[start]```, the addition of 90 degree is to use a sine instead of cosine.  
 
-Now looking at ```angleb````  
+Now looking at ```angleb```  
 
 ```
 angleb = ANG90 + (viewangle + xtoviewangle[start] - rw_normalangle);
