@@ -23,7 +23,7 @@ With some investigation, each Mission is composed of a set of Lumps. Those Lumps
   
 What we will focus on to generate our 2D map would be VERTEXES and LINEDEFS. If we can plot the vertexes and connect those vertexes with the lines defined by linedefs, then we should be able to generate a 2D representation of the map.  
 
-![Demo Map](../img/map.PNG)  
+![Demo Map](./img/map.PNG)  
 
 The above demo map has the following characteristics 
 * 4 Vertexes
@@ -259,11 +259,11 @@ Now let’s run this! Wow! lots of cool number, but are they correct? Let’s ch
 let’s see if slade can help us here again.
   
 We can locate the map in the slade menu and look at the lump’s details, let’s compare numbers.
-![Vertex](../img/vertex.PNG)  
+![Vertex](./img/vertex.PNG)  
   
 Looks good!
 What about the Linedef?
-![Linedef](../img/linedef.PNG)  
+![Linedef](./img/linedef.PNG)  
   
 I have also added this enum mostly we will try to utilize this when we try to draw the map.
 
@@ -287,16 +287,16 @@ While I was writing this code, I mistakenly was reading more bytes than I should
   
 If you don’t see the memory window to go Debug > Memory > Memory.  
   
-![Memory](../img/memory.PNG)  
+![Memory](./img/memory.PNG)  
   
 Now you can see the memory values in hexadecimal.  
 Those values can be compared by the hex view in slade, where you can right click any lump and view it as hex.  
   
-![Slade](../img/hex.PNG)  
+![Slade](./img/hex.PNG)  
   
 Comparing both with the address of the WAD that is loaded in memory  
   
-![Debug](../img/debug.png)  
+![Debug](./img/debug.png)  
 
 One final thing for today, we have seen all those vertexes numbers, is there an easy way to plot those without writing the code, I don’t want to invest time then find out we were not working in the right direction.  
 For sure someone out there implemented graph plotter. Surely, I googled "draw points on a graph" and first result was a website called [Plot Points - Desmos](https://www.desmos.com/calculator), you can paste from your clipboard with multiple points and it should draw them for you. We will need to format as flowing "(x, y)". That is easy just let’s change our print function to do that for us.  
@@ -307,7 +307,7 @@ cout << "("  << vertex.XPosition << "," << vertex.YPosition << ")" << endl;
   
 Wow! That is a resemblance of E1M1! We are up to something!  
   
-![E1M1 Plot Points](../img/plot.PNG) 
+![E1M1 Plot Points](./img/plot.PNG) 
 
 If your lazy to do that here is a link with the vertex being populated  
 
@@ -315,7 +315,7 @@ If your lazy to do that here is a link with the vertex being populated
 
 But let’s step it up, with a little bit of work we can connect those points given the linedefs.  
 
-![E1M1 Plot Vertex](../img/plotvertex.PNG) 
+![E1M1 Plot Vertex](./img/plotvertex.PNG) 
 
 Here is a link
 
