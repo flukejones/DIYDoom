@@ -338,4 +338,4 @@ Drawing Portals was easier than I had expected. It may sound complex at the begi
 [Source code](../src)  
 
 ## Reference
-https://doom.fandom.com/wiki/Seg
+[Segs Doom Fandom](https://doom.fandom.com/wiki/Seg)
