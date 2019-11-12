@@ -1,5 +1,5 @@
 # Week 005 - Player and Things
-Before we start looking into any rendering we will need to know where the player is looking to render what he is looking at. So let's focus on where the player spawns on a map.  
+Before we start looking into any rendering we will need to know where the player is looking to render what he is looking at. So, let's focus on where the player spawns on a map.  
 The player is a "Thing"! Player spawn location is specified in the Things lump of the map.  
   
 ## Goals
@@ -11,7 +11,7 @@ The player is a "Thing"! Player spawn location is specified in the Things lump o
 Adding a new Player class and refactor code.  
 
 ## Coding
-Let's start by adding the player class. All we need to keep track of now is the player location and angle he is looking at, in other words, some Setters and Getters. Doom supports up to four players in CO-OP, and uses the player number as there ID. So player 1 will have ID 1, player 2 will have ID 2 and so on. Our focus now will mainly be on player 1.  
+Let's start by adding the player class. All we need to keep track of now is the player location and angle he is looking at, in other words, some Setters and Getters. Doom supports up to four players in CO-OP, and uses the player number as their ID. So, player 1 will have ID 1, player 2 will have ID 2 and so on. Our focus now will mainly be on player 1.  
 
 ``` cpp
 class Player
@@ -102,7 +102,7 @@ bool WADLoader::ReadMapThing(Map *pMap)
     int iThingsSizeInBytes = sizeof(Thing);
     int iThingsCount = m_WADDirectories[iMapIndex].LumpSize / iThingsSizeInBytes;
 
-    Thing thing;
+    Thing;
     for (int i = 0; i < iThingsCount; ++i)
     {
         m_Reader.ReadThingData(m_WADData, m_WADDirectories[iMapIndex].LumpOffset + i * iThingsSizeInBytes, thing);
@@ -121,7 +121,7 @@ bool WADLoader::ReadMapThing(Map *pMap)
 }
 ```
   
-Also same here just reading the data!
+Also, same here just reading the data!
   
 ``` cpp
 void WADReader::ReadThingData(const uint8_t *pWADData, int offset, Thing &thing)
@@ -136,12 +136,12 @@ void WADReader::ReadThingData(const uint8_t *pWADData, int offset, Thing &thing)
   
 Let's look at what we have read from the lump and match it with Slade3.
   
-![Things](../img/things.PNG)  
+![Things](./img/things.PNG)  
   
 All looks good!
 Now let's try and draw the player as a small dot on the automap.
   
-I have done some refactoring to the drawing function, I have broken down RenderAutoMap to two smaller helper functions.
+I have done some refactoring to the drawing function; I have broken down RenderAutoMap to two smaller helper functions.
   
 ``` cpp
 void RenderAutoMapPlayer(SDL_Renderer * pRenderer, int iXShift, int iYShift);
@@ -189,7 +189,7 @@ void Map::RenderAutoMapWalls(SDL_Renderer *pRenderer, int iXShift, int iYShift)
 }
 ```
 
-Okay! Now let's render the player. Initially, I wanted to draw the player as a filled circle but there was no function to do so in SDL! So I tried the second best thing to draw a cluster of dots of size  3 x 3 to show the player. You could have done a 2 for-loops that draw the same, your free to do so it makes things easier.
+Okay! Now let's render the player. Initially, I wanted to draw the player as a filled circle but there was no function to do so in SDL! So, I tried the second-best thing to draw a cluster of dots of size  3 x 3 to show the player. You could have done a 2 for-loops that draw the same, your free to do so it makes things easier.
 
 ``` cpp
 void Map::RenderAutoMapPlayer(SDL_Renderer *pRenderer, int iXShift, int iYShift)
@@ -220,10 +220,10 @@ void Map::RenderAutoMapPlayer(SDL_Renderer *pRenderer, int iXShift, int iYShift)
 ```
 
 Let's look at the cute player now!
-![Player](../img/player.PNG)  
+![Player](./img/player.PNG)  
   
-Map class also had a small optimization. If the map index is previously looked up from the lump it should be cached.
-Just add an integer to store the lump index, and initialize it with -1. Before any lookup just check if the index is valid (m_iLumpIndex > -1), if so just use that, if not look it up and update it. 
+Map class also had a small optimization. If the map index is previously looked up from the lump, it should be cached.
+Just add an integer to store the lump index and initialize it with -1. Before any lookup just check if the index is valid (m_iLumpIndex > -1), if so, just use that, if not look it up and update it. 
   
 Map class 
 
@@ -241,7 +241,7 @@ int WADLoader::FindMapIndex(Map *pMap)
     // Is the index previously found?
     if (pMap->GetLumpIndex() > -1)
     {
-        // Just return it and dont search
+        // Just return it and don’t search
         return pMap->GetLumpIndex();
     }
         
@@ -259,10 +259,10 @@ int WADLoader::FindMapIndex(Map *pMap)
 }
 ```
 
-Other minor changes I did was add more logging so it is clear what is happening in the console window.  
+Other minor changes I did was add more logging, so it is clear what is happening in the console window.  
 
 ## Other Notes
-In Chocolate DOOM the function P_LoadThings in p_setup.c does load the things for a map. One itresting thing was the following  
+In Chocolate DOOM the function P_LoadThings in p_setup.c does load the things for a map. One interesting thing was the following  
 ``` cpp 
 	// Do not spawn cool, new monsters if !commercial
 	if (gamemode != commercial)
@@ -285,11 +285,11 @@ In Chocolate DOOM the function P_LoadThings in p_setup.c does load the things fo
 	}
 ```
 
-This code disable monstors to spawn from non-commercial version. So if your running a shareware version you will not have the full experince as retail/commercial release.
+This code disables monsters to spawn from non-commercial version. So, if you’re running a shareware version you will not have the full experience as retail/commercial release.
 
 ## Source code
 [Source code](../src)  
 
 ## Reference
 [Doom Wiki](https://doomwiki.org/wiki/Thing)  
-[ZDoom Wiki](https://zdoom.org/wiki/Thing)  
+[ZDoom Wiki](https://zdoom.org/wiki/Thing)   
