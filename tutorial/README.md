@@ -20,6 +20,7 @@ Update DIYDoom.cpp to create and call the Game class, to create a game loop.
 ## Coding
 First you will need to download SDL libraries which can be found [here](https://www.libsdl.org/)  
 at the time of writing SDL2 v2.0.9 is the latest stable version, remember to download the Development Libraries version in my case "SDL2-devel-2.0.9-VC.zip". Unzip this anywhere you like but keep things organized. I have a SDKs directory on D drive where I keep all my SDKs.  
+
 ![SDK](./img/sdlfolder.PNG)  
 
 You will need to note where include and lib directories are.  
