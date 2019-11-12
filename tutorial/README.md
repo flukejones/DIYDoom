@@ -1,6 +1,6 @@
 # Week 003 - Adding SDL
 Now that we have read some data from the WAD, we need to draw something on the screen, after all we are trying to make a game.  
-The console windows are nice but it is text based (it can be hacked to draw graphics), but we need a window were we can draw some graphics. We can use windows APIs but that will add windows as a dependency for us, which I don’t want. This is where SDL comes in play.  
+The console windows are nice, but it is text based (it can be hacked to draw graphics), but we need a window where we can draw some graphics. We can use windows APIs but that will add windows as a dependency for us, which I don’t want. This is where SDL comes in play.  
 
 ## SDL  
 SDL is a cross platform library to provide a hardware, and OS abstraction for multimedia components. In the previous Weeks, we would could have used SDL in opening and reading the WAD file, and endian conversion.  
@@ -20,23 +20,23 @@ Update DIYDoom.cpp to create and call the Game class, to create a game loop.
 ## Coding
 First you will need to download SDL libraries which can be found [here](https://www.libsdl.org/)  
 at the time of writing SDL2 v2.0.9 is the latest stable version, remember to download the Development Libraries version in my case "SDL2-devel-2.0.9-VC.zip". Unzip this anywhere you like but keep things organized. I have a SDKs directory on D drive where I keep all my SDKs.  
-![SDK](../img/sdlfolder.PNG)  
+![SDK](./img/sdlfolder.PNG)  
 
 You will need to note where include and lib directories are.  
 Now let’s go to our project and update the settings to see and use the SDL library right click on DIYDoom project and select Properties.    
-![Properties](../img/properties.PNG)  
+![Properties](./img/properties.PNG)  
 
 Under C/C++, edit the Additional include directories and add where the SDL "include" folder located.  
 
-![Include](../img/include.PNG)  
+![Include](./img/include.PNG)  
 
 Now under Linker, edit Additional Library Directories and add where the SDL "lib". If you look in those folders the libraries are under x64 and x86 folders, so make sure you have the correct path.  
 
-![Lib1](../img/lib1.PNG)  
+![Lib1](./img/lib1.PNG)  
 
 Finally, under Linker > Input, edit Additional Dependencies and add SDL2main.lib, SDL2.lib.  
 
-![Lib2](../img/lib2.PNG)  
+![Lib2](./img/lib2.PNG)  
 
 ### DoomEngine Class  
 DoomEngine class will be a class that knows the internals of our Doom clone. It will keep track of the player, the game status, what map is loaded etc. The list will grow as we implement more of the game.  
@@ -79,7 +79,7 @@ We will not go through every function implementation, you can have a look at the
 DoomEngine constructor  
   
 ``` cpp
-// For now, lets match doom default resolution
+// For now, let’s match doom default resolution
 // and then stretch this to the final window 
 // And let’s create an instance of the map
 DoomEngine::DoomEngine() : m_bIsOver(false), m_iRenderWidth(320), m_iRenderHeight(200)
@@ -105,7 +105,7 @@ bool DoomEngine::Init()
 }
 ```
   
-And also, just lets clear the Window we want to draw with black for now  
+And, just let’s clear the Window we want to draw with black for now  
   
 ``` cpp
 void DoomEngine::Render(SDL_Renderer *pRenderer)
@@ -124,7 +124,7 @@ So, our simple game loop will follow this simple logic.
 3. Display the new updated world  
 4. Lock the refresh rate to max 60 per sec (by waiting)  
   
-Let’s create some functions that represent this high level functionality to our Game class
+Let’s create some functions that represent this high-level functionality to our Game class
   
 ``` cpp
 class Game
@@ -236,7 +236,7 @@ With Game class being created our main function needs to call those function.
 Game game;
 game.Init();
 
-while (!game.IsOver()) // Did the user quite?
+while (!game.IsOver()) // Did the user exit?
 {
     game.ProcessInput(); // Read the user input
     game.Update();  // Update all our objects in memory (characters, map, etc.)
@@ -245,9 +245,9 @@ while (!game.IsOver()) // Did the user quite?
 }
 ```
 
-When you run this all you will get is an empty window. Now we are ready to draw something!  
+When you run this all, you will get is an empty window. Now we are ready to draw something!  
 
-![Window](../img/window.png)  
+![Window](./img/window.png)  
 
 ## Source code
 [Source code](../src)  
