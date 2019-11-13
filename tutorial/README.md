@@ -1,4 +1,3 @@
-__Author:__ Amro Ibrahim  
 __Editor:__ DOOMReboot ([twitter](https://twitter.com/DOOMReboot))  
 
 # Week 008 - Finding Walls and BSP Traversal  
@@ -8,25 +7,25 @@ This week things will start getting serious, our main goal is to render a 3D vie
 *  Which of these walls are in the player's field of view? Later week  
 *  Render what the player is seeing. Later week  
 
-So with us knowing where the player is, the first step of the 3D rendering journey is to figure out which walls are closest to the player. If you have been a ID Software fan you mostly know by now how Wolfenstein 3D rendering works, and the big shift between Wolf3D and DOOM was the utilization of a BSP Tree (BSP was used in Wolf3D SNES version). 
-How things worked in Wolf 3D was using [ray casting](https://en.wikipedia.org/wiki/Ray_casting) technology. But using such a technology has a lot of limitations. This is where BSP trees comes in. BSP trees are used to help us know which walls are closest to the player. So let's get started.  
+So, with us knowing where the player is, the first step of the 3D rendering journey is to figure out which walls are closest to the player. If you have been an ID Software fan you mostly know by now how Wolfenstein 3D rendering works, and the big shift between Wolf3D and DOOM was the utilization of a BSP Tree (BSP was used in Wolf3D SNES version). 
+How things worked in Wolf 3D was using [ray casting](https://en.wikipedia.org/wiki/Ray_casting) technology. But using such a technology has a lot of limitations. This is where BSP trees comes in. BSP trees are used to help us know which walls are closest to the player. So, let us get started.  
 
 With all the info we have from the binary tree traversal it should be easy to understand this. The BSP traversal is based on the modified algorithm we discussed in Week007, with the only difference being that the map space is being split instead of numbers.  
 
 Here is how the root node can be visualized.  
 
-![Root Node](../img/BSP2.png) 
+![Root Node](./img/BSP2.png) 
 
 Notice the small blue line that splits the map to front/back (or left and right)?  
 The front and back of a line are based on the direction of drawing the line. So that specific line is drawn from top to bottom, this makes the left side the front (green box), and the right box the back (the red box). Recursively, the front and the back of those boxes are split into smaller boxes, for example here is the front box in the above picture being split into smaller ones.  
 
-![Child Node](../img/BSP4.png)  
+![Child Node](./img/BSP4.png)  
 
 The map breaking down all the way to what is known as "sub-sector", for now, let's just think about a sub-sector as a small piece of map walls (we will look into details about sector and sub-sectors later).  
 
 Here is an image to visualize how sub-sectors would look. All the pieces with the same color are part of the same sub-sector.
 
-![Sub-sectors](../img/subsectors.png)  
+![Sub-sectors](./img/subsectors.png)  
 
 I see BSP traversal as two stage actions
 1. Find which sub-sector the player is in
@@ -34,20 +33,20 @@ I see BSP traversal as two stage actions
 
 But before we start there is one missing key part that we have not discussed yet! How in the world will I know if a player is in front or behind a splitter line? The answer is "cross product".   
 
-First, let's quickly go over a what a vector is.
+First, let us quickly go over a what a vector is.
 A vector is an object that has both a magnitude and a direction. We can visualize a vector as a line in a specific direction, where we know its length and magnitude. 
   
-![Vector](../img/vector.png)  
+![Vector](./img/vector.png)  
   
-In other words, a line that has a starting point and an end point. Given two points a and b, moving from a to b (where we know both magnitude and direction). If you remember, the splitter walls in the BSP nodes are actually vectors, they have a starting point and direction.  
+In other words, a line that has a starting point and an end point. Given two points a and b, moving from a to b (where we know both magnitude and direction). If you remember, the splitter walls in the BSP nodes are vectors, they have a starting point and direction.  
   
-Cross product is a mathematical operation on two vectors and the output is another vector. The output vector will also have magnitude and a direction. We can tell its direction if it is up or down based on the sign value of the cross product (we don't care much about the magnitude).    
+Cross product is a mathematical operation on two vectors and the output is another vector. The output vector will also have magnitude and a direction. We can tell its direction if it is up or down based on the sign value of the cross product (we do not care much about the magnitude).    
 
-![Cross product](../img/crossproduct.gif)
+![Cross product](./img/crossproduct.gif)
 
-Notice in the above example that if vector b is on the left of a output vector points up, and when b the right of a output vector points down. We can use this to our advantage.  
+Notice in the above example that if vector b is on the left of an output vector points up, and when b the right of an output vector points down. We can use this to our advantage.  
 
-So lets create our two vectors
+So, lets create our two vectors
 1. Splitter V1 to the position of the player.  
 2. Splitter V1 to its V2.  
   
@@ -55,7 +54,7 @@ Finding cross products is easy once you have the two vectors.
 For two 2D vector A=(Ax, Ay), B=(Bx, By) the cross product is  
 __A x B = Ax * By - Ay * Bx__  
   
-![Cross product](../img/crossprod.png)  
+![Cross product](./img/crossprod.png)  
 
 Keep in mind A X B = -B X A  
 
@@ -117,16 +116,16 @@ void Map::RenderBSPNodes()
 
 void Map::RenderSubsector(int iSubsectorID)
 {
-    // for now just let's keep this empty
+    // for now, just let us keep this empty
 }
 ```
 
 Animating the searching for the player  
   
-![Player Search](../img/search.gif)  
+![Player Search](./img/search.gif)  
 
 Sweeeet!  
-Now let's finish this off, by going through the rest of the tree to give us the custom sort we want (Week006)!
+Now let us finish this off, by going through the rest of the tree to give us the custom sort we want (Week006)!
 
 ```cpp
 void Map::RenderBSPNodes(int iNodeID)
@@ -157,8 +156,8 @@ void Map::RenderBSPNodes(int iNodeID)
 Now, ```RenderSubsector``` will be called processing sub-sectors from near to far!  
 
 ## Other Notes
-Let's take a look at the original/Chocolate doom code that did the BSP traversal. You will find the implementation in ``` r_bsp.c ```, function ``` R_RenderBSPNode ```.  
-Let's peek at the struct that held the node data. 
+Let us look at the original/Chocolate doom code that did the BSP traversal. You will find the implementation in ``` r_bsp.c ```, function ``` R_RenderBSPNode ```.  
+Let us peek at the struct that held the node data. 
 ``` cpp
 //
 // BSP node.
@@ -181,7 +180,7 @@ typedef struct
 ```
   
 We could have defined our box boundaries as bbox was defined, but I found it was easier to be explicit about the naming and not to hide them under array indexes.   
-What was interesting was that children nodes were an array. As soon as I saw the code, I was wondering why it wasn't defined as two separate variables, back/front or left/right but it didn't take much time to know it was an optimization.   
+What was interesting was that children nodes were an array. As soon as I saw the code, I was wondering why it was not defined as two separate variables, back/front, or left/right but it did not take much time to know it was an optimization.   
   
 ``` cpp
 //
@@ -222,7 +221,7 @@ void R_RenderBSPNode (int bspnum)
 }
 ```
 
-What is happening here? Where is the condition to check which side the player is on and traverse based on that? hmmm...  
+What is happening here? Where is the condition to check which side, the player is on and traverse based on that? hmmm...  
 Nice trick! I got it! So the function ```R_PointOnSide (viewx, viewy, bsp);``` returns 0 or 1 (true or false) which is used to select either the child at index 0 or index 1 ```R_RenderBSPNode (bsp->children[side]);```. Now to go to the other branch we just call ```R_RenderBSPNode (bsp->children[side^1]);```.
 What happened here is a good utilization of X-OR operation.  
 
@@ -233,7 +232,7 @@ What happened here is a good utilization of X-OR operation.
 | 1 | 0 | 1       |  
 | 1 | 1 | 0       |  
 
-So you always get to invert the case when calling ```R_RenderBSPNode (bsp->children[side^1]);```. So, no "if" statement is needed to determine the code path, which will make the code perform faster (better branch predictor for the CPU).  
+So, you always get to invert the case when calling ```R_RenderBSPNode (bsp->children[side^1]);```. So, no "if" statement is needed to determine the code path, which will make the code perform faster (better branch predictor for the CPU).  
 The function ```R_CheckBBox (bsp->bbox[side^1])``` is another optimization that saves going though nodes that are not in the player FOV (maybe something we could look at and implement later).  
 
 ## Source code
