@@ -1,4 +1,5 @@
 __Editor:__ DOOMReboot ([twitter](https://twitter.com/DOOMReboot))  
+__Special Thanx:__ Matt ([misnor](https://github.com/misnor))  
 
 # Week 011 - Horizontal Projection  
 So, at this point we know all the walls which are within the player's FOV and we know the angle to those walls, but where should we draw them on the screen?  
@@ -59,7 +60,7 @@ public:
     void AddWallInFOV(Seg seg, Angle V1Angle, Angle V2Angle);
     void InitFrame();
     void SetDrawColor(int R, int G, int B);
-    void DrawRect(int X, int Y, int X2, int Y2);
+    void DrawRect(int X1, int Y1, int X2, int Y2);
     void DrawLine(int X1, int Y1, int X2, int Y2);
 
 protected:
