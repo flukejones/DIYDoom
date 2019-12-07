@@ -180,14 +180,13 @@ a look at E1M3
 
 ![E1M3](./img/E1M3C.png)  
 
-Next, I will start exploring how we could read the textures from the WAD files and see if we could possibly give the walls some texture.  
-[DOOMReboot](https://twitter.com/DOOMReboot) has been working on a WAD Media Viewer, he has shared the source code with me and he is currently writing an article how to read/view media out of WADs.
+Next, I will start exploring how we could read the textures from the WAD files and see if we could possibly give the walls some texture. 
 
 ## Other Notes
 I would recommend reading about "drawsegs" in Fabian book "GAME ENGINE BLACK BOOK DOOM" v1.1 section 5.12.9.2. If you are not clear why we need to keep track of the drawing history I would recommend watching the videos at [fabiensanglard.net](http://fabiensanglard.net/doomIphone/doomClassicRenderer.php), for doom rendering under the "Things and transparent walls". You will notice that "Things" and partial see thought segs gets drawn in a similar behavior to back to front.  
 In classic / Chocolate Doom there is a limit to the history array "drawsegs" could have up to 256 entry which could cause some issues in custom maps, later ports removed the limit.  
 
-Now looking at my code, it is very obvious that the design is missed up, there is allot of stuff happening in ViewRenderer class, we should have a separate class to handle a segment and draw it (similar to DOOM code), also having the player as a separate class is not a good idea. I see that we should have a Things class, then the player should be sub-class. All things will need to know its sector height, they will also need to move around.  
+Now looking at my code, it is very obvious that the design is missed up, there is alot of stuff happening in ViewRenderer class, we should have a separate class to handle a segment and draw it (similar to DOOM code), also having the player as a separate class is not a good idea. I see that we should have a Things class, then the player should be sub-class. All things will need to know its sector height, they will also need to move around.  
 
 ## Source code
 [Source code](../src)  
