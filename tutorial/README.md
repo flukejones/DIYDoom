@@ -298,6 +298,6 @@ DOOM caps the frame rate at 35 FPS, this is covered in Fabians DOOM book v1.1 se
 [Source code](../src)  
 
 ## Reference
-https://doom.fandom.com/wiki/TEXTURE1_and_TEXTURE2
-https://doom.fandom.com/wiki/Picture_format
-https://doomwiki.org/wiki/Picture_format
+https://doom.fandom.com/wiki/TEXTURE1_and_TEXTURE2  
+https://doom.fandom.com/wiki/Picture_format  
+https://doomwiki.org/wiki/Picture_format  
