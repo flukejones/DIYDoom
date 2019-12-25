@@ -232,7 +232,7 @@ What happened here is a good utilization of X-OR operation.
 | 1 | 0 | 1       |  
 | 1 | 1 | 0       |  
 
-So, you always get to invert the case when calling ```R_RenderBSPNode (bsp->children[side^1]);```. So, no "if" statement is needed to determine the code path, which will make the code perform faster (better branch predictor for the CPU).  
+So, you always get to invert the case when calling ```R_RenderBSPNode (bsp->children[side^1]);```.   
 The function ```R_CheckBBox (bsp->bbox[side^1])``` is another optimization that saves going though nodes that are not in the player FOV (maybe something we could look at and implement later).  
 
 ## Source code
