@@ -262,7 +262,7 @@ Transparency seems to be working well!
 
 ## Other Notes
 The patch format is really intreating format, with such format it is really easy and fast to draw a patch on the screen buffer, just go to the correct offset and place the column data content. 
-That patch drawing function in doom chocolate code is called ```void V_DrawPatch(int x, int y, patch_t *patch)```. It works very similarly to our implementation
+The patch drawing function in doom chocolate code is called ```void V_DrawPatch(int x, int y, patch_t *patch)```. It works very similarly to our implementation
 
 ``` cpp
 void V_DrawPatch(int x, int y, patch_t *patch)
