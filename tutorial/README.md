@@ -36,7 +36,7 @@ Now, let’s move to sub-sector, a sector is broken down into small pieces when 
 ![Convex Segs](../img/subsectors.png)  
 [Image credit Doom Wiki](https://doom.fandom.com/wiki/Subsectori)
 
-It is very common that sub-sectors are represented as a polygon (a closed convex polygon), but the closed polygon part is not very accurate. Usually, an extra side is added and adding that extra line would help visualize which subsector the player is in. If you color the segs you would end up with something like this  
+It is very common that segs are represented as a polygon (a closed convex polygon). Usually, an extra seg is added, and adding that extra seg would help visualize which subsector the player is in. If you color the segs you would end up with something like this  
 
 ![Segs](../img/segs.png)   
 
